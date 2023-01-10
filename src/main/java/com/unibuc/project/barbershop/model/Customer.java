@@ -3,14 +3,15 @@ package com.unibuc.project.barbershop.model;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static com.unibuc.project.barbershop.model.Pattern.RO_phone_number;
 
 @Entity
 public class Customer {
 
-    @OneToOne
-    @JoinColumn(name="appointment_id")
-    Appointment appointment;
+    @OneToMany(mappedBy = "customer")
+    List<Appointment> appointments;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +41,14 @@ public class Customer {
 
     public String getName() {
         return name;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
 
     public void setName(String name) {

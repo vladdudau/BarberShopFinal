@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class WorkScheduleMapper {
     public WorkSchedule WorkScheduleRequestToWorkSchedule(WorkScheduleRequest workScheduleRequest) {
-        return new WorkSchedule(workScheduleRequest.getBarber(), workScheduleRequest.getWorkdays(), workScheduleRequest.getStartTime(), workScheduleRequest.getEndTime());
+        return new WorkSchedule(workScheduleRequest.getBarber() ,workScheduleRequest.getWorkday(), workScheduleRequest.getStartTime(), workScheduleRequest.getEndTime());
     }
 }

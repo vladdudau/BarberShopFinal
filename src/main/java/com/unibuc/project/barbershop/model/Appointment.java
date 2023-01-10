@@ -1,14 +1,11 @@
 package com.unibuc.project.barbershop.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.util.List;
-
-
-import javax.validation.constraints.Pattern;
 
 import static com.unibuc.project.barbershop.model.Pattern.HH_MM_timer;
 import static com.unibuc.project.barbershop.model.Pattern.date_format;
@@ -20,20 +17,21 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(mappedBy = "appointment")
+    @ManyToOne
     private Customer customer;
 
-    @OneToOne(mappedBy = "appointment")
+
+
+    @ManyToOne
     private Barber barber;
 
     private boolean isCancelled = false;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="payment_type")
     private PaymentType paymentType;
 
 
-    @JsonFormat(pattern = date_format)
+
     LocalDate date;
 
 

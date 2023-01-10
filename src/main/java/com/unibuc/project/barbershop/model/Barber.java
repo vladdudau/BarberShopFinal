@@ -19,13 +19,14 @@ public class Barber {
 
     private String name;
 
-    @OneToOne
-    @JoinColumn(name="appointment_id")
-    Appointment appointment;
 
-    @OneToMany
-    @JoinColumn(name="workschedule_id")
+
+    @OneToMany(mappedBy = "barber")
     private List<WorkSchedule> workSchedules;
+
+
+    @OneToMany(mappedBy = "barber")
+    private List<Appointment> appointments;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -100,6 +101,14 @@ public class Barber {
 
     public Integer getSeatNumber() {
         return seatNumber;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
 
     public void setSeatNumber(Integer seatNumber) {

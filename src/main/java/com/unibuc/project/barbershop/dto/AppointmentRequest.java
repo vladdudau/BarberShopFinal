@@ -1,5 +1,6 @@
 package com.unibuc.project.barbershop.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.unibuc.project.barbershop.model.Barber;
 import com.unibuc.project.barbershop.model.Customer;
 import com.unibuc.project.barbershop.model.HairstyleProduct;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static com.unibuc.project.barbershop.model.Pattern.HH_MM_timer;
+import static com.unibuc.project.barbershop.model.Pattern.date_format;
 
 
 @ApiModel(value = "Appointment request", description = "Required details needed to create a new Appointment")
@@ -31,11 +33,12 @@ public class AppointmentRequest {
 
 
     @NotNull
-    @ApiModelProperty(value = "paymentType", required = true, notes = "Payment type", example = "debit or cash", position = 3)
+    @ApiModelProperty(value = "paymentType", required = true, notes = "Payment type(debit or cash)", example = "debit", position = 3)
     private PaymentType paymentType;
 
-    @NotNull
+
     @ApiModelProperty(value = "date", required = true, notes = "Calendar date in future", example="07-02-2023", position = 4)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = date_format)
     LocalDate date;
 
     @NotBlank
@@ -50,8 +53,8 @@ public class AppointmentRequest {
 
 
 
-    @NotNull
-    @ApiModelProperty(value = "products", required = true, notes = "Appointment products to apply", example="All details or id for lookup", position = 7)
+
+    @ApiModelProperty(value = "products", required = true, notes = "Appointment products to apply", position = 7)
     private List<HairstyleProduct> products;
 
     public AppointmentRequest() {

@@ -20,12 +20,13 @@ public class BarberRequest {
     @ApiModelProperty(value = "name", required = true, notes = "The name of barber", example = "Alin Popescu", position = 1)
     private String name;
 
-    @ApiModelProperty(value = "work_schedules", required = true, notes = "Work schedule", example = "Id lookup or all details", position = 2)
+    @ApiModelProperty(value = "work_schedules", required = true, notes = "Work schedule", position = 2)
+    @NotNull
     private List<WorkSchedule> workSchedules;
 
     @NotNull
-    @ApiModelProperty(value = "gender", required = true, notes = "The gender of the barber", example = "Male/Female/Unknown", position = 3)
-    private Gender gender;
+    @ApiModelProperty(value = "gender", required = true, notes = "The gender of the barber", example = "MALE", position = 3)
+    private String gender;
 
     @NotBlank
     @ApiModelProperty(value = "phone_number", required = true, notes = "The RO phone number of the barber", example = "0723456789", position = 4)
@@ -36,10 +37,10 @@ public class BarberRequest {
     @ApiModelProperty(value = "seat_number", required = true, notes = "The seat number of the barber workplace", example ="1", position = 5)
     private Integer seatNumber;
 
-    public BarberRequest(String name, List<WorkSchedule> workSchedules, Gender gender, String phoneNumber, Integer seatNumber) {
+    public BarberRequest(String name, List<WorkSchedule> workSchedules, String gender, String phoneNumber, Integer seatNumber) {
         this.name = name;
         this.workSchedules = workSchedules;
-        this.gender = gender;
+        this.gender = gender.toUpperCase();
         this.phoneNumber = phoneNumber;
         this.seatNumber = seatNumber;
     }
@@ -64,11 +65,11 @@ public class BarberRequest {
     }
 
     public Gender getGender() {
-        return gender;
+        return Gender.valueOf(gender);
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setGender(String gender) {
+        this.gender = gender.toUpperCase();
     }
 
     public String getPhoneNumber() {

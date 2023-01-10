@@ -14,11 +14,11 @@ import static com.unibuc.project.barbershop.model.Pattern.RO_phone_number;
 public class CustomerRequest {
     @NotBlank
     @Max(50)
-    @ApiModelProperty(value = "name", required = true, notes = "The name of customer", example = "Andrei", position = 1)
+    @ApiModelProperty(value = "name", required = true, notes = "The name of customer", example = "Andrei Matei", position = 1)
     private String name;
 
     @NotBlank
-    @ApiModelProperty(value = "gender", required = true, notes = "The gender of the customer", example = "Male/Female/Unknown", position = 2)
+    @ApiModelProperty(value = "gender", required = true, notes = "The gender of the customer", example = "Male", position = 2)
     private Gender gender;
 
     @Pattern(regexp = RO_phone_number)

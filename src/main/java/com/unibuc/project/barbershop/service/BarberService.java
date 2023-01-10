@@ -1,6 +1,5 @@
 package com.unibuc.project.barbershop.service;
 
-import com.unibuc.project.barbershop.exception.AppointmentNotFoundException;
 import com.unibuc.project.barbershop.exception.BarberNotFoundException;
 import com.unibuc.project.barbershop.exception.DuplicateBarberException;
 import com.unibuc.project.barbershop.model.Appointment;
@@ -27,13 +26,17 @@ public class BarberService {
         return BarberRepository.save(barber);
     }
 
-    public Barber getGarber(Long id) {
+    public Barber getBarber(Long id) {
         Optional<Barber> barberOptional = BarberRepository.findById(id);
         if(barberOptional.isPresent()) {
             return barberOptional.get();
         } else {
             throw new BarberNotFoundException(id);
         }
+    }
+
+    public Optional<Barber> findById(long id) {
+        return BarberRepository.findById(id);
     }
 
 

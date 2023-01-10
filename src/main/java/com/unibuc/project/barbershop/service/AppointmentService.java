@@ -3,10 +3,8 @@ package com.unibuc.project.barbershop.service;
 import com.unibuc.project.barbershop.exception.AppointmentNotFoundException;
 import com.unibuc.project.barbershop.exception.DuplicateAppointmentException;
 import com.unibuc.project.barbershop.model.Appointment;
-import com.unibuc.project.barbershop.model.Customer;
 import com.unibuc.project.barbershop.model.PaymentType;
 import com.unibuc.project.barbershop.repository.AppointmentRepository;
-import com.unibuc.project.barbershop.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +20,7 @@ public class AppointmentService {
 
     public Appointment create(Appointment appointment) {
         Optional<Appointment> existingAppointmentSameSeat =
-                appointmentRepository.findByDateAndStartTime(appointment.getDate(), appointment.getStartTime());
+                appointmentRepository.findByDateAndStartTime(appointment.getDate(), appointment.getStartTime() );
 
         existingAppointmentSameSeat.ifPresent(e -> {
             throw new DuplicateAppointmentException();
@@ -37,6 +35,10 @@ public class AppointmentService {
         } else {
             throw new AppointmentNotFoundException(id);
         }
+    }
+
+    public Optional<Appointment> findById(long id) {
+        return appointmentRepository.findById(id);
     }
 
     public List<Appointment> getAllByPaymentType(PaymentType type) {

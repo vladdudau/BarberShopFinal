@@ -3,9 +3,6 @@ package com.unibuc.project.barbershop.model;
 
 import javax.persistence.*;
 import java.util.List;
-
-import static com.unibuc.project.barbershop.model.Pattern.HH_MM_timer;
-
 @Entity
 public class WorkSchedule {
 
@@ -16,11 +13,9 @@ public class WorkSchedule {
     @ManyToOne
     private Barber barber;
 
-    @ElementCollection(targetClass = Workday.class)
-    @JoinTable(name = "workdays", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "workdays", nullable = false)
+
     @Enumerated(EnumType.STRING)
-    private List<Workday> workdays;
+    private Workday workday;
 
     private String startTime;
 
@@ -33,24 +28,6 @@ public class WorkSchedule {
     public WorkSchedule() {
     }
 
-    public WorkSchedule(long id, Barber barber, List<Workday> workdays, String startTime, String endTime) {
-        this.id = id;
-        this.barber = barber;
-        this.workdays = workdays;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
-
-    public WorkSchedule(Barber barber, List<Workday> workdays, String startTime, String endTime) {
-        this.barber = barber;
-        this.workdays = workdays;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
-
-    public void setBarber(Barber barber) {
-        this.barber = barber;
-    }
 
     public long getId() {
         return id;
@@ -60,13 +37,16 @@ public class WorkSchedule {
         this.id = id;
     }
 
-
-    public List<Workday> getWorkdays() {
-        return workdays;
+    public void setBarber(Barber barber) {
+        this.barber = barber;
     }
 
-    public void setWorkdays(List<Workday> workdays) {
-        this.workdays = workdays;
+    public Workday getWorkday() {
+        return workday;
+    }
+
+    public void setWorkday(Workday workday) {
+        this.workday = workday;
     }
 
     public String getStartTime() {
@@ -82,6 +62,35 @@ public class WorkSchedule {
     }
 
     public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public WorkSchedule(Workday workday, String startTime, String endTime) {
+
+        this.workday = workday;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public WorkSchedule(long id, Barber barber, Workday workday, String startTime, String endTime) {
+        this.id = id;
+        this.barber = barber;
+        this.workday = workday;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public WorkSchedule(Barber barber, Workday workday, String startTime, String endTime) {
+        this.barber = barber;
+        this.workday = workday;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public WorkSchedule(long id, Workday workday, String startTime, String endTime) {
+        this.id = id;
+        this.workday = workday;
+        this.startTime = startTime;
         this.endTime = endTime;
     }
 }

@@ -17,7 +17,7 @@ public class WorkScheduleService {
 
     public WorkSchedule create(WorkSchedule workSchedule) {
         Optional<WorkSchedule> existingWorkSchedule =
-                workScheduleRepository.findByBarberAndStartTimeAndWorkdaysIn(workSchedule.getBarber(), workSchedule.getStartTime(), workSchedule.getWorkdays());
+                workScheduleRepository.findByBarberAndStartTimeAndWorkday(workSchedule.getBarber(), workSchedule.getStartTime(), workSchedule.getWorkday());
 
         existingWorkSchedule.ifPresent(e -> {
             throw new DuplicateHairstyleProductException();

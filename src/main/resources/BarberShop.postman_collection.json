@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "4630dd76-a8b6-4517-b5ef-0424a5fa45f4",
+		"name": "BarberShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25232499"
+	},
+	"item": [
+		{
+			"name": "POST barber",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"gender\": \"female\",\r\n  \"name\": \"Alexandra Paine\",\r\n  \"phoneNumber\": \"0723456789\",\r\n  \"seatNumber\": 1,\r\n  \"workSchedules\": [\r\n    {\r\n      \"endTime\": \"16:00\",\r\n      \"id\": 0,\r\n      \"startTime\": \"21:00\",\r\n      \"workday\": \"MONDAY\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/barbers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"barbers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST schedule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"barber\": { \"id\": 22},\r\n  \"workday\": \"MONDAY\",\r\n  \"startTime\": \"16:00\",\r\n  \"endTime\": \"21:00\"\r\n  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/schedules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"schedules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Fade\",\r\n  \"purchasePrice\": 40\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET appointment",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "POST appointment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customer\": {\r\n        \"id\": 1\r\n    },\r\n    \"barber\": { \r\n        \"id\": 1\r\n    },\r\n    \"iscancelled\": false,\r\n    \"paymentType\": \"DEBIT\",\r\n    \"starttime\": \"16:00\",\r\n    \"endtime\": \"17:00\",\r\n    \"date\": \"02/02/2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/appointments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"appointments"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST appointment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer\": {\r\n        \"id\": 1\r\n    },\r\n    \"barber\": { \r\n        \"id\": 1\r\n    },\r\n    \"iscancelled\": false,\r\n    \"paymentType\": \"DEBIT\",\r\n    \"starttime\": \"16:00\",\r\n    \"endtime\": \"17:00\",\r\n    \"date\": \"02/02/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/appointments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "POST appointment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer\": {\r\n        \"id\": 2\r\n    },\r\n    \"barber\": { \r\n        \"id\": 1\r\n    },\r\n    \"iscancelled\": false,\r\n    \"paymentType\": \"CASH\",\r\n    \"starttime\": \"11:00\",\r\n    \"endtime\": \"11:00\",\r\n    \"date\": \"01/03/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/appointments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "POST customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alex Paulescu\",\r\n    \"gender\": \"MALE\",\r\n    \"phone_number\": \"0759323422\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST customer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Alex Paulescu\",\r\n    \"gender\": \"MALE\",\r\n    \"phone_number\": \"0759323422\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

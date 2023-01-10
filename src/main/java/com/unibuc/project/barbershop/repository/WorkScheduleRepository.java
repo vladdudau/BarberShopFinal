@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface WorkScheduleRepository extends JpaRepository<WorkSchedule, Long> {
-    List<WorkSchedule> findAllByWorkdaysIn(List<Workday> workdays);
+    List<WorkSchedule> findAllByWorkday(Workday workday);
 
-    Optional<WorkSchedule> findByBarberAndStartTimeAndWorkdaysIn(Barber barber, String startTime, List<Workday> workdays);
+    Optional<WorkSchedule> findByBarberAndStartTimeAndWorkday(Barber barber, String startTime, Workday workday);
 }
